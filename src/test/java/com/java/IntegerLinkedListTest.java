@@ -1,15 +1,14 @@
 package com.java;
 
 import org.junit.jupiter.api.Test;
-import org.w3c.dom.Node;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class ListTest {
+public class IntegerLinkedListTest {
   @Test
   void shouldGetAnEmptyList() {
-    SinglyLinkedList<Integer> list = new SinglyLinkedList<Integer>();
+    IntegerLinkedList list = new IntegerLinkedList();
 
     boolean isListEmpty = list.isEmpty();
 
@@ -18,10 +17,20 @@ public class ListTest {
 
   @Test
   void shouldInsertDataToTheList() {
-    SinglyLinkedList<Integer> list = new SinglyLinkedList<Integer>();
+    IntegerLinkedList list = new IntegerLinkedList();
 
     int sizeAfterInsertion = list.insert(5);
 
     assertEquals(1, sizeAfterInsertion);
+  }
+
+  @Test
+  void shouldInsertDataToTheLast() {
+    IntegerLinkedList list = new IntegerLinkedList();
+
+    list.insert(5);
+    int sizeAfterInsertion = list.insert(10);
+
+    assertEquals(2, sizeAfterInsertion);
   }
 }

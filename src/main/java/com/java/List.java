@@ -1,7 +1,6 @@
 package com.java;
 
-public class SinglyLinkedList<T> {
-
+public class List<T> {
   private class Node {
     Node next;
     T data;
@@ -10,6 +9,7 @@ public class SinglyLinkedList<T> {
   private Node head;
   private Node tail;
   int size = 0;
+
   public boolean isEmpty() {
     return head == null;
   }
