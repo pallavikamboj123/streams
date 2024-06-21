@@ -1,12 +1,7 @@
 package com.java;
 
-import static java.util.Collections.min;
 
 public class IntegerList extends List<Integer> {
-  public IntegerList() {
-    super();
-  }
-
   public IntegerList calculateSquare() {
     IntegerList squaredValues = new IntegerList();
     Node current = this.getHead();
@@ -66,7 +61,9 @@ public class IntegerList extends List<Integer> {
     int minValue = Integer.MAX_VALUE;
     Node current = this.getHead();
     while (current != null) {
-      if(current.data < minValue) minValue = current.data;
+      if (current.data < minValue) {
+        minValue = current.data;
+      }
       current = current.next;
     }
     return minValue;
@@ -76,7 +73,9 @@ public class IntegerList extends List<Integer> {
     int maxValue = Integer.MIN_VALUE;
     Node current = this.getHead();
     while (current != null) {
-      if(current.data > maxValue) maxValue = current.data;
+      if (current.data > maxValue) {
+        maxValue = current.data;
+      }
       current = current.next;
     }
     return maxValue;

@@ -1,23 +1,31 @@
 package com.java;
 
+import java.util.Objects;
+
 public class List<T> {
 
   public boolean isEquals(List<T> list) {
     Node currentHead = head;
     Node givenHead = list.head;
 
+    if (size != givenHead.getSize()) {
+      return false;
+    }
+
     return checkIfListsAreEqual(currentHead, givenHead);
   }
 
   private boolean checkIfListsAreEqual(Node currentHead, Node givenHead) {
-    while(currentHead != null) {
-      if(currentHead.data != givenHead.data) return false;
-
+    while (currentHead != null) {
+      if (!Objects.equals(currentHead.data, givenHead.data)) {
+        return false;
+      }
       currentHead = currentHead.next;
       givenHead = givenHead.next;
     }
     return true;
   }
+
   public int getSize() {
     return size;
   }
@@ -29,6 +37,10 @@ public class List<T> {
   protected class Node {
     Node next;
     T data;
+
+    public int getSize() {
+      return size;
+    }
   }
 
   private Node head;
@@ -43,11 +55,10 @@ public class List<T> {
     Node newNode = new Node();
     newNode.data = data;
 
-    if(this.isEmpty()) {
+    if (this.isEmpty()) {
       head = newNode;
       tail = newNode;
-    }
-    else {
+    } else {
       tail.next = newNode;
       tail = tail.next;
     }
