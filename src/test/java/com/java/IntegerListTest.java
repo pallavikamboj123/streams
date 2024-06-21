@@ -71,4 +71,79 @@ public class IntegerListTest {
 
     assertTrue(actual.isEquals(expected));
   }
+
+  @Test
+  void shouldGetOnlyOddValuesOfList() {
+    IntegerList list = new IntegerList();
+    IntegerList expected = new IntegerList();
+
+    list.insert(5);
+    list.insert(2);
+    list.insert(1);
+
+    expected.insert(5);
+    expected.insert(1);
+
+    IntegerList actual = list.getOddValues();
+
+    assertTrue(actual.isEquals(expected));
+  }
+
+  @Test
+  void shouldGetOnlyEvenValuesOfList() {
+    IntegerList list = new IntegerList();
+    IntegerList expected = new IntegerList();
+
+    list.insert(5);
+    list.insert(2);
+    list.insert(1);
+
+    expected.insert(2);
+
+    IntegerList actual = list.getEvenValues();
+
+    assertTrue(actual.isEquals(expected));
+  }
+
+  @Test
+  void shouldGetSumOfAllListValues() {
+    IntegerList list = new IntegerList();
+
+    list.insert(5);
+    list.insert(2);
+    list.insert(1);
+
+
+    int actual = list.getSum();
+
+    assertEquals(8, actual);
+  }
+
+  @Test
+  void shouldGetMinimumValueFromTheList() {
+    IntegerList list = new IntegerList();
+
+    list.insert(5);
+    list.insert(2);
+    list.insert(1);
+
+
+    int actual = list.getMinimumValue();
+
+    assertEquals(1, actual);
+  }
+
+  @Test
+  void shouldGetMaxValueFromTheList() {
+    IntegerList list = new IntegerList();
+
+    list.insert(5);
+    list.insert(2);
+    list.insert(1);
+
+
+    int actual = list.getMaximumValue();
+
+    assertEquals(5, actual);
+  }
 }
