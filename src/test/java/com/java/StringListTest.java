@@ -18,7 +18,7 @@ class StringListTest {
     expected.insert("AM");
     expected.insert("ARE");
 
-    StringList actual = stringList.convertToUpperCase();
+    List<String> actual = stringList.convertToUpperCase();
 
     assertTrue(actual.isEquals(expected));
   }
@@ -36,7 +36,7 @@ class StringListTest {
     expected.insert("am");
     expected.insert("are");
 
-    StringList actual = stringList.convertToLowerCase();
+    List<String> actual = stringList.convertToLowerCase();
 
     assertTrue(actual.isEquals(expected));
   }
@@ -53,7 +53,7 @@ class StringListTest {
     expected.insert("ame");
     expected.insert("are");
 
-    StringList actual = stringList.getThreeLengthValues();
+    List<String> actual = stringList.getThreeLengthValues();
 
     assertTrue(actual.isEquals(expected));
   }
@@ -61,7 +61,7 @@ class StringListTest {
   @Test
   void shouldGetSizeOfEveryStringFromList() {
     StringList stringList = new StringList();
-    IntegerList expected = new IntegerList();
+    List<Integer> expected = new List<>();
 
     stringList.insert("is");
     stringList.insert("ame");
@@ -71,7 +71,7 @@ class StringListTest {
     expected.insert(3);
     expected.insert(3);
 
-    IntegerList actual = stringList.getStringLength();
+    List<Integer> actual = stringList.getStringLength();
 
     assertTrue(actual.isEquals(expected));
   }

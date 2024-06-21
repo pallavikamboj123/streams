@@ -48,7 +48,7 @@ public class IntegerListTest {
     expected.insert(16);
 
 
-    IntegerList actual = list.calculateSquare();
+    List<Integer> actual = list.calculatePower(2);
 
     assertTrue(actual.isEquals(expected));
   }
@@ -67,7 +67,7 @@ public class IntegerListTest {
     expected.insert(64);
 
 
-    IntegerList actual = list.calculateCubeValues();
+    List<Integer> actual = list.calculatePower(3);
 
     assertTrue(actual.isEquals(expected));
   }
@@ -84,7 +84,7 @@ public class IntegerListTest {
     expected.insert(5);
     expected.insert(1);
 
-    IntegerList actual = list.getOddValues();
+    List<Integer> actual = list.getOddValues();
 
     assertTrue(actual.isEquals(expected));
   }
@@ -100,7 +100,7 @@ public class IntegerListTest {
 
     expected.insert(2);
 
-    IntegerList actual = list.getEvenValues();
+    List<Integer> actual = list.getEvenValues();
 
     assertTrue(actual.isEquals(expected));
   }

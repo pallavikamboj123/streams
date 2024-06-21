@@ -1,83 +1,45 @@
 package com.java;
 
 
+import java.util.function.BiFunction;
+import java.util.function.Function;
+
 public class IntegerList extends List<Integer> {
-  public IntegerList calculateSquare() {
-    IntegerList squaredValues = new IntegerList();
-    Node current = this.getHead();
-    while (current != null) {
-      squaredValues.insert((int) Math.pow(current.data, 2));
-      current = current.next;
-    }
-    return squaredValues;
+
+  public List<Integer> calculatePower(int exponent) {
+    Function<Integer, Integer> function = val -> (int) Math.pow(val, exponent);
+
+    return this.map(function);
   }
 
+  public List<Integer> getOddValues() {
+    Function<Integer, Boolean> function = val -> (val % 2) != 0;
 
-  public IntegerList calculateCubeValues() {
-    IntegerList cubeValues = new IntegerList();
-    Node current = this.getHead();
-    while (current != null) {
-      cubeValues.insert((int) Math.pow(current.data, 3));
-      current = current.next;
-    }
-    return cubeValues;
+    return this.filter(function);
   }
 
-  public IntegerList getOddValues() {
-    IntegerList oddValues = new IntegerList();
-    Node current = this.getHead();
-    while (current != null) {
-      if (current.data % 2 != 0) {
-        oddValues.insert(current.data);
-      }
-      current = current.next;
-    }
-    return oddValues;
-  }
+  public List<Integer> getEvenValues() {
+    Function<Integer, Boolean> function = val -> (val % 2) == 0;
 
-  public IntegerList getEvenValues() {
-    IntegerList evenValues = new IntegerList();
-    Node current = this.getHead();
-    while (current != null) {
-      if (current.data % 2 == 0) {
-        evenValues.insert(current.data);
-      }
-      current = current.next;
-    }
-    return evenValues;
+    return this.filter(function);
   }
 
   public int getSum() {
-    int sum = 0;
-    Node current = this.getHead();
-    while (current != null) {
-      sum = sum + current.data;
-      current = current.next;
-    }
-    return sum;
+    BiFunction<Integer, Integer, Integer> function = Integer::sum;
+
+    return this.reduce(0, function);
   }
 
   public int getMinimumValue() {
-    int minValue = Integer.MAX_VALUE;
-    Node current = this.getHead();
-    while (current != null) {
-      if (current.data < minValue) {
-        minValue = current.data;
-      }
-      current = current.next;
-    }
-    return minValue;
+    BiFunction<Integer, Integer, Integer> function = Integer::min;
+
+    return this.reduce(Integer.MAX_VALUE, function);
   }
 
   public int getMaximumValue() {
-    int maxValue = Integer.MIN_VALUE;
-    Node current = this.getHead();
-    while (current != null) {
-      if (current.data > maxValue) {
-        maxValue = current.data;
-      }
-      current = current.next;
-    }
-    return maxValue;
+    BiFunction<Integer, Integer, Integer> function = Integer::max;
+
+    return this.reduce(Integer.MIN_VALUE, function);
   }
+
 }

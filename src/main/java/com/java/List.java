@@ -1,6 +1,8 @@
 package com.java;
 
 import java.util.Objects;
+import java.util.function.BiFunction;
+import java.util.function.Function;
 
 public class List<T> {
 
@@ -34,7 +36,42 @@ public class List<T> {
     return head;
   }
 
-  protected class Node {
+  protected <R> List<R> map(Function<T, R> function) {
+    Node current = head;
+    List<R> result = new List<>();
+
+    while (current != null) {
+      result.insert(function.apply(current.data));
+      current = current.next;
+    }
+
+    return result;
+  }
+
+  protected List<T> filter(Function<T, Boolean> function) {
+    Node current = head;
+    List<T> result = new List<>();
+
+    while (current != null) {
+      if (function.apply(current.data)) {
+        result.insert(current.data);
+      }
+      current = current.next;
+    }
+    return result;
+  }
+
+  protected<R> R reduce(R initialValue, BiFunction<R, T, R> function) {
+    Node current = head;
+    R result = initialValue;
+    while (current != null) {
+      result = function.apply(result, current.data);
+      current = current.next;
+    }
+    return result;
+  }
+
+  private class Node {
     Node next;
     T data;
 

@@ -1,86 +1,61 @@
 package com.java;
 
+import java.util.function.BiFunction;
+import java.util.function.Function;
+
 public class StringList extends List<String> {
 
-  public StringList convertToUpperCase() {
-    StringList upperCase = new StringList();
-    Node current = this.getHead();
+  public List<String> convertToUpperCase() {
+    Function<String, String> function = String::toUpperCase;
 
-    while(current != null) {
-      upperCase.insert(current.data.toUpperCase());
-      current = current.next;
-    }
-    return upperCase;
+    return this.map(function);
   }
 
-  public StringList convertToLowerCase() {
-    StringList lowerCase = new StringList();
-    Node current = this.getHead();
+  public List<String> convertToLowerCase() {
+    Function<String, String> function = String::toLowerCase;
 
-    while(current != null) {
-      lowerCase.insert(current.data.toLowerCase());
-      current = current.next;
-    }
-    return lowerCase;
+    return this.map(function);
   }
 
-  public StringList getThreeLengthValues() {
-    StringList newList = new StringList();
-    Node current = this.getHead();
+  public List<String> getThreeLengthValues() {
+    Function<String, Boolean> function = val -> val.length() == 3;
 
-    while(current != null) {
-      if(current.data.length() == 3)
-        newList.insert(current.data);
-      current = current.next;
-    }
-    return newList;
+    return this.filter(function);
   }
 
-  public IntegerList getStringLength() {
-    IntegerList newList = new IntegerList();
-    Node current = this.getHead();
+  public List<Integer> getStringLength() {
+    Function<String, Integer> function = String::length;
 
-    while(current != null) {
-      newList.insert(current.data.length());
-      current = current.next;
-    }
-    return newList;
+    return this.map(function);
   }
 
   public int getStringLengthSum() {
-    IntegerList newList = new IntegerList();
-    Node current = this.getHead();
+    BiFunction<Integer, String, Integer> function =
+      (total, val) -> Integer.sum(val.length(), total);
 
-    while(current != null) {
-      newList.insert(current.data.length());
-      current = current.next;
-    }
-
-    return newList.getSum();
+    return this.reduce(0, function);
   }
 
   public String concatStringList() {
-    StringBuilder result = new StringBuilder();
-    Node current = this.getHead();
+    String delimiter = " ";
 
-    while(current != null) {
-      result.append(current.data);
-      if(current.next != null)
-        result.append(" ");
-      current = current.next;
-    }
+    BiFunction<String, String, String> function = (str1, str2) -> {
+      if (str1.isEmpty()) {
+        return str2;
+      } else {
+        return String.join(delimiter, str1, str2);
+      }
+    };
 
-    return result.toString();
+    return this.reduce("", function);
   }
 
   public String concatFirstCharStringList() {
-    StringBuilder result = new StringBuilder();
-    Node current = this.getHead();
 
-    while(current != null) {
-      result.append(current.data.charAt(0));
-      current = current.next;
-    }
-    return result.toString();
+    BiFunction<String, String, String> function =
+      (str1, str2) -> str1.concat(String.valueOf(str2.charAt(0)));
+    return this.reduce("", function);
   }
 }
+
+
