@@ -5,6 +5,18 @@ import java.util.function.BiFunction;
 import java.util.function.Function;
 
 public class List<T> {
+  private Node head;
+  private Node tail;
+  int size = 0;
+
+  private class Node {
+    Node next;
+    T data;
+
+    public int getSize() {
+      return size;
+    }
+  }
 
   public boolean isEquals(List<T> list) {
     Node currentHead = head;
@@ -32,10 +44,6 @@ public class List<T> {
     return size;
   }
 
-  protected Node getHead() {
-    return head;
-  }
-
   protected <R> List<R> map(Function<T, R> function) {
     Node current = head;
     List<R> result = new List<>();
@@ -61,7 +69,7 @@ public class List<T> {
     return result;
   }
 
-  protected<R> R reduce(R initialValue, BiFunction<R, T, R> function) {
+  protected <R> R reduce(R initialValue, BiFunction<R, T, R> function) {
     Node current = head;
     R result = initialValue;
     while (current != null) {
@@ -71,18 +79,6 @@ public class List<T> {
     return result;
   }
 
-  private class Node {
-    Node next;
-    T data;
-
-    public int getSize() {
-      return size;
-    }
-  }
-
-  private Node head;
-  private Node tail;
-  int size = 0;
 
   public boolean isEmpty() {
     return head == null;
