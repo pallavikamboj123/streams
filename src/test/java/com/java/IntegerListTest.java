@@ -21,7 +21,7 @@ public class IntegerListTest {
 
     list.insert(5);
 
-    assertEquals(1, list.getSize());
+    assertEquals(1, list.getLength());
   }
 
   @Test
@@ -31,7 +31,9 @@ public class IntegerListTest {
     list.insert(5);
     list.insert(10);
 
-    assertEquals(2, list.getSize());
+    assertEquals(2, list.getLength());
+    assertEquals(5, list.getData(0));
+    assertEquals(10, list.getData(1));
   }
 
   @Test
@@ -122,6 +124,7 @@ public class IntegerListTest {
   @Test
   void shouldGetMinimumValueFromTheList() {
     IntegerList list = new IntegerList();
+
 
     list.insert(5);
     list.insert(2);

@@ -4,6 +4,9 @@ import java.util.function.BiFunction;
 import java.util.function.Function;
 
 public class StringList extends List<String> {
+  public StringList() {
+    super();
+  }
 
   public List<String> convertToUpperCase() {
     Function<String, String> function = String::toUpperCase;

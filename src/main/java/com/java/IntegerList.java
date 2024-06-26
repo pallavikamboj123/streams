@@ -6,6 +6,10 @@ import java.util.function.Function;
 
 public class IntegerList extends List<Integer> {
 
+  public IntegerList() {
+    super();
+  }
+
   public List<Integer> calculatePower(int exponent) {
     Function<Integer, Integer> function = val -> (int) Math.pow(val, exponent);
 
