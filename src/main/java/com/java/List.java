@@ -3,6 +3,7 @@ package com.java;
 import java.util.Objects;
 import java.util.function.BiFunction;
 import java.util.function.Function;
+import java.util.function.Predicate;
 
 
 public class List<T> {
@@ -92,12 +93,14 @@ public class List<T> {
     return result;
   }
 
-  protected List<T> filter(Function<T, Boolean> function) {
+  protected List<T> filter(Predicate<T> function) {
     Node<T> current = head;
     List<T> result = new List<>();
 
+
+
     while (!current.isEmptyNode()) {
-      if (function.apply(current.data)) {
+      if (function.test(current.data)) {
         result.insert(current.data);
       }
       current = current.next;

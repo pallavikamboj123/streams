@@ -3,6 +3,7 @@ package com.java;
 
 import java.util.function.BiFunction;
 import java.util.function.Function;
+import java.util.function.Predicate;
 
 public class IntegerList extends List<Integer> {
 
@@ -17,13 +18,13 @@ public class IntegerList extends List<Integer> {
   }
 
   public List<Integer> getOddValues() {
-    Function<Integer, Boolean> function = val -> (val % 2) != 0;
+    Predicate<Integer> function = val -> (val % 2) != 0;
 
     return this.filter(function);
   }
 
   public List<Integer> getEvenValues() {
-    Function<Integer, Boolean> function = val -> (val % 2) == 0;
+    Predicate<Integer> function = val -> (val % 2) == 0;
 
     return this.filter(function);
   }

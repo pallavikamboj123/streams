@@ -2,6 +2,7 @@ package com.java;
 
 import java.util.function.BiFunction;
 import java.util.function.Function;
+import java.util.function.Predicate;
 
 public class StringList extends List<String> {
   public StringList() {
@@ -21,7 +22,7 @@ public class StringList extends List<String> {
   }
 
   public List<String> getThreeLengthValues() {
-    Function<String, Boolean> function = val -> val.length() == 3;
+    Predicate<String> function = val -> val.length() == 3;
 
     return this.filter(function);
   }
